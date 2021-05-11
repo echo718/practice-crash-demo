@@ -1,7 +1,8 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import Header from "./components/Header";
 import AddTask from "./components/AddTask";
 import Tasks from "./components/Tasks";
+import Filter from "./components/Filter";
 
 function App() {
   const [clickShowTask, setClickShowTask] = useState(false);
@@ -29,6 +30,16 @@ function App() {
     },
   ]);
 
+  const [tasksAll, setTasksAll] = useState(tasks);
+
+  useEffect(() => {
+    setTasks(tasks);
+  }, [])
+  //为了tasks值变化时候调用
+  useEffect(() => {
+    console.log(tasks);
+  }, [tasks])
+ 
   const deleteTask = (id) => {
     setTasks(tasks.filter((task) => task.id !== id));
   };
@@ -50,6 +61,38 @@ function App() {
     );
   };
 
+  const reminderTrue = () => {
+
+    setTasks(tasksAll);
+    console.log(tasks, tasksAll);
+
+    setTasks(tasks.filter((task) => task.reminder));
+    console.log(true);
+  };
+
+  
+  const reminderFalse = () => {
+    //给tasks赋值后，还是用的旧值，为什么不回调useEffect
+    setTasks(tasksAll);
+    console.log(tasks, tasksAll);
+
+    setTasks(tasks.filter((task) => !task.reminder));
+    console.log(false);
+  };
+
+  
+//filter功能，点击set/unset 获得reminder=true的列表
+  const TargetOption = (value) => {
+  
+    if (value == 1) {
+      reminderTrue();
+    } else if (value == 2) {
+      reminderFalse();
+    } else {
+      setTasks(tasksAll);
+    }
+  };
+
   return (
     <div className="container">
       <Header
@@ -58,6 +101,8 @@ function App() {
       />
 
       {clickShowTask && <AddTask onAdd={addTask} />}
+
+      <Filter option={TargetOption} />
 
       {tasks.length > 0 ? (
         <Tasks tasks={tasks} onDelete={deleteTask} onToggle={doubleClick} />
