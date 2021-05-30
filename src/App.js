@@ -53,7 +53,7 @@ function App() {
   };
 
   const doubleClick = (id) => {
-    // 后面为什么不能用{task}
+   
     setTasks(
       tasks.map((task) =>
         task.id === id ? { ...task, reminder: !task.reminder } : task
