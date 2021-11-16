@@ -7,7 +7,7 @@ import Tasks from "./components/Tasks";
 import Filter from "./components/Filter";
 import About from "./components/About";
 
-//this is add json file
+//this is new add on 17
 function App() {
   const [clickShowTask, setClickShowTask] = useState(false);
 
