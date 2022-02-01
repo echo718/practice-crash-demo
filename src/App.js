@@ -24,7 +24,7 @@ function App() {
     getTasks();
   }, []);
 
-  //fetch data
+  //fetch datadddd
   const fetchTasks = async () => {
     const res = await fetch("http://localhost:3000/tasks");
     const data = await res.json();
