@@ -7,7 +7,8 @@ import Tasks from "./components/Tasks";
 import Filter from "./components/Filter";
 import About from "./components/About";
 
-//this is new add on 17
+
+//this is new add on 17dddd
 function App() {
   const [clickShowTask, setClickShowTask] = useState(false);
 
@@ -24,7 +25,8 @@ function App() {
     getTasks();
   }, []);
 
-  //fetch datadddd
+
+  //fetch data
   const fetchTasks = async () => {
     const res = await fetch("http://localhost:3000/tasks");
     const data = await res.json();
