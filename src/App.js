@@ -8,7 +8,7 @@ import Filter from "./components/Filter";
 import About from "./components/About";
 
 
-//this is new add on 14/02/2022
+//this is new add on 14/02/2022-v2
 function App() {
   const [clickShowTask, setClickShowTask] = useState(false);
 
